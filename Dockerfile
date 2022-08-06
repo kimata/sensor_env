@@ -10,7 +10,7 @@ RUN apt-get install -y python3-yaml python3-coloredlogs
 RUN apt-get install -y python3-fluent-logger
 RUN apt-get install -y python3-smbus python3-spidev python3-bluez
 
-WORKDIR /opt/sensor-env
+WORKDIR /opt/sensor_env
 COPY . .
 
 CMD ["./app/room.py"]
