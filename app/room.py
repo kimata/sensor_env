@@ -5,10 +5,7 @@ import os
 import socket
 import sys
 import time
-import json
 import pathlib
-import subprocess
-import re
 import importlib
 import logging
 import fluent.sender
@@ -42,10 +39,8 @@ def sense(sensor_list):
         logging.info(val)
         value_map.update(val)
 
-    logging.info(
-        "Mearged measurements: {result}".format(result=str(value_map))
-    )
-        
+    logging.info("Mearged measurements: {result}".format(result=str(value_map)))
+
     return value_map
 
 

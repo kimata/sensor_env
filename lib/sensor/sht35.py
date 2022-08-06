@@ -8,7 +8,6 @@
 # https://www.tindie.com/products/closedcube/sht35-d-digital-humidity-temperature-sensor/
 
 import time
-import struct
 import smbus
 
 
@@ -62,9 +61,9 @@ class SHT35:
             raise IOError("ERROR: CRC unmatch.")
 
         temp = -45 + (175 * int.from_bytes(data[0:2], byteorder="big")) / float(
-            2**16 - 1
+            2 ** 16 - 1
         )
-        humi = 100 * int.from_bytes(data[3:5], byteorder="big") / float(2**16 - 1)
+        humi = 100 * int.from_bytes(data[3:5], byteorder="big") / float(2 ** 16 - 1)
 
         return [round(temp, 2), round(humi, 2)]
 

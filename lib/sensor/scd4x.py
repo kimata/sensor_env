@@ -8,7 +8,6 @@
 # 明示的に start_periodic_measurement を呼ばなくても済むように少し工夫しています．
 
 import time
-import struct
 import smbus
 
 
