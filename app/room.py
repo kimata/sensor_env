@@ -19,7 +19,7 @@ from config import load_config
 import logger
 
 
-SENSOR_MODULE_LIST = ["max31856", "sht35"]
+SENSOR_MODULE_LIST = ["scd4x", "max31856", "sht35"]
 
 
 def load_sensor():
@@ -42,6 +42,10 @@ def sense(sensor_list):
         logging.info(val)
         value_map.update(val)
 
+    logging.info(
+        "Mearged measurements: {result}".format(result=str(value_map))
+    )
+        
     return value_map
 
 
