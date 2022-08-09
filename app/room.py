@@ -16,7 +16,7 @@ from config import load_config
 import logger
 
 
-SENSOR_MODULE_LIST = ["scd4x", "max31856", "sht35"]
+SENSOR_MODULE_LIST = ["scd4x", "max31856", "sht35", "apds9250"]
 
 
 def load_sensor():
