@@ -61,7 +61,7 @@ logging.info(
     )
 )
 
-hostname = os.environ.get("NODE_HOSTNAME") or socket.gethostname()
+hostname = os.environ.get("NODE_HOSTNAME", socket.gethostname())
 
 logging.info("Hostanm: {hostname}".format(hostname=hostname))
 
@@ -76,7 +76,7 @@ while True:
         logging.info("Finish.")
         pathlib.Path(config["liveness"]["file"]).touch()
     else:
-        logging.error(fluent_logger.last_error)
+        logging.error(sender.last_error)
 
     logging.info(
         "sleep {sleep_time} sec...".format(sleep_time=config["sense"]["interval"])
