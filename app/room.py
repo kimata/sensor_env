@@ -45,7 +45,7 @@ def sense(sensor_list):
 
 
 ######################################################################
-logger.init("Enviorment Sensor")
+logger.init("sensor.enviorment")
 
 logging.info("Load config...")
 config = load_config()
