@@ -8,6 +8,7 @@ import time
 import pathlib
 import importlib
 import logging
+import traceback
 import fluent.sender
 
 sys.path.append(os.path.join(os.path.dirname(__file__), os.pardir, "lib"))
@@ -32,12 +33,15 @@ def load_sensor():
 def sense(sensor_list):
     value_map = {}
     for sensor in sensor_list:
-        logging.info(
-            "Measurements are being taken using {name}".format(name=sensor.NAME)
-        )
-        val = sensor.get_value_map()
-        logging.info(val)
-        value_map.update(val)
+        try:
+            logging.info(
+                "Measurements are being taken using {name}".format(name=sensor.NAME)
+            )
+            val = sensor.get_value_map()
+            logging.info(val)
+            value_map.update(val)
+        except:
+            logging.error(traceback.format_exc())
 
     logging.info("Mearged measurements: {result}".format(result=str(value_map)))
 
