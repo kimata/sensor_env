@@ -16,16 +16,23 @@ sys.path.append(os.path.join(os.path.dirname(__file__), os.pardir, "lib"))
 from config import load_config
 import logger
 
+RASP_I2C_BUS_ARM = 0x1  # Raspberry Pi のデフォルトの I2C バス番号
+RASP_I2C_BUS_VC = 0x0  # dtparam=i2c_vc=on で有効化される I2C のバス番号
 
-SENSOR_MODULE_LIST = ["scd4x", "max31856", "sht35", "apds9250"]
+SENSOR_MODULE_LIST = [
+    {"name": "scd4x", "bus": RASP_I2C_BUS_ARM},
+    {"name": "max31856", "bus": RASP_I2C_BUS_ARM},
+    {"name": "sht35", "bus": RASP_I2C_BUS_ARM},
+    {"name": "apds9250", "bus": RASP_I2C_BUS_ARM},
+]
 
 
 def load_sensor():
     sensor_list = []
-    for name in SENSOR_MODULE_LIST:
-        logging.info("Load {name}".format(name=name))
-        mod = importlib.import_module("sensor." + name)
-        sensor_list.append(getattr(mod, name.upper())())
+    for sensor in SENSOR_MODULE_LIST:
+        logging.info("Load {name}".format(name=sensor["name"]))
+        mod = importlib.import_module("sensor." + sensor["name"])
+        sensor_list.append(getattr(mod, sensor["name"].upper())(bus=sensor["bus"]))
 
     return sensor_list
 
