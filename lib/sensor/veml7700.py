@@ -75,6 +75,7 @@ class VEML7700:
         try:
             self.i2cbus.read_i2c_block_data(self.dev_addr, self.REG_ALS_CONF, 2)
 
+            # NOTE: 読み出しエラーが起こらなければセンサーが接続されていると見なす
             return True
         except:
             pass
