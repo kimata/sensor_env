@@ -24,6 +24,7 @@ SENSOR_MODULE_LIST = [
     {"name": "max31856", "bus": RASP_I2C_BUS_ARM},
     {"name": "sht35", "bus": RASP_I2C_BUS_ARM},
     {"name": "apds9250", "bus": RASP_I2C_BUS_ARM},
+    {"name": "veml7700", "bus": RASP_I2C_BUS_ARM},
     {"name": "veml6075", "bus": RASP_I2C_BUS_VC},
 ]
 
