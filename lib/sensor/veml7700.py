@@ -97,9 +97,9 @@ class VEML7700:
             # NOTE:
             # https://www.vishay.com/docs/84367/designingveml6030.pdf
             als = (
-                (6.0135e-13 * als ** 4)
-                - (9.3924e-9 * als ** 3)
-                + (8.1488e-5 * als ** 2)
+                (6.0135e-13 * als**4)
+                - (9.3924e-9 * als**3)
+                + (8.1488e-5 * als**2)
                 + (1.0023e0 * als)
             )
 

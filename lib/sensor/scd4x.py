@@ -95,9 +95,9 @@ class SCD4X:
 
         co2 = int.from_bytes(resp[0:2], byteorder="big")
         temp = -45 + (175 * int.from_bytes(resp[2:4], byteorder="big")) / float(
-            2 ** 16 - 1
+            2**16 - 1
         )
-        humi = 100 * int.from_bytes(resp[4:6], byteorder="big") / float(2 ** 16 - 1)
+        humi = 100 * int.from_bytes(resp[4:6], byteorder="big") / float(2**16 - 1)
 
         return [co2, round(temp, 4), round(humi, 1)]
 
